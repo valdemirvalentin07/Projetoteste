@@ -1,0 +1,414 @@
+/* ════════════════════════════════════════════════════
+   Famiglia Tegon — quemsomos.css
+   ════════════════════════════════════════════════════
+   Índice:
+   01. Design tokens  (header SINCRONIZADO com a suite)
+   02. Reset mínimo
+   03. Header fixo
+   04. Reduced-motion
+   05. Page hero
+   06. Seção história
+   07. Imagem sticky + caption
+   08. Valores / pillars
+   09. Section utilities
+   10. WhatsApp FAB
+   11. Footer
+   12. Responsivo
+   ════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────
+   01. Design tokens
+   ───────────────────────────────────────────────────── */
+:root {
+    --tg-cream:         #FAF7F2;
+    --tg-ink:           #1C1A16;
+    --tg-ink-muted:     #6B6760;
+    --tg-surface:       #ffffff;
+    --tg-brand:         #c41212;
+    --tg-accent:        #F59E0B;
+    --tg-green:         #22C55E;
+    --tg-wa:            #25D366;
+
+    --tg-ink-06:        rgba(28, 26, 22, .06);
+    --tg-ink-10:        rgba(28, 26, 22, .10);
+    --tg-ink-22:        rgba(28, 26, 22, .22);
+    --tg-wa-40:         rgba(37, 211, 102, .40);
+    --tg-wa-50:         rgba(37, 211, 102, .50);
+    --tg-white-06:      rgba(255, 255, 255, .06);
+
+    --tg-font-display:  'Playfair Display', Georgia, serif;
+    --tg-font-body:     'DM Sans', system-ui, sans-serif;
+
+    --tg-topbar-h:      40px;
+    --tg-navbar-h:      65px;
+    --tg-header-h:      calc(var(--tg-topbar-h) + var(--tg-navbar-h));
+
+    --tg-sp-xs:         0.5rem;
+    --tg-sp-sm:         0.75rem;
+    --tg-sp-lg:         1.5rem;
+
+    --tg-radius-card:   16px;
+    --tg-radius-btn:    10px;
+    --tg-shadow-img:    0 8px 32px var(--tg-ink-06);
+    --tg-shadow-img-lg: 0 14px 42px rgba(28, 26, 22, .16);
+    --tg-shadow-wa:     0 4px 16px var(--tg-wa-40);
+    --tg-shadow-wa-lg:  0 6px 22px var(--tg-wa-50);
+    --tg-ease:          .2s ease;
+    --tg-ease-slow:     .4s ease;
+}
+
+/* ─────────────────────────────────────────────────────
+   02. Reset mínimo
+   ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* ─────────────────────────────────────────────────────
+   03. Header fixo
+   ───────────────────────────────────────────────────── */
+body {
+    background-color: var(--tg-cream);
+    font-family: var(--tg-font-body);
+    color: var(--tg-ink);
+    margin: 0;
+    padding-top: var(--tg-header-h);
+}
+
+.tg-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--tg-topbar-h);
+    z-index: 1031;
+    background-color: #111 !important;
+    display: flex;
+    align-items: center;
+}
+
+.navbar.navbar-custom {
+    top: var(--tg-topbar-h) !important;
+    height: var(--tg-navbar-h);
+    background-color: var(--tg-surface) !important;
+    border-bottom: 1px solid var(--tg-ink-10);
+}
+
+.logo-nav {
+    height: 52px;
+    width: auto;
+    transition: height var(--tg-ease);
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: var(--tg-ink) !important;
+    font-family: var(--tg-font-body);
+    font-weight: 500;
+    padding: 0.625rem 0.9375rem !important;
+    transition: color var(--tg-ease);
+}
+
+.navbar-custom .navbar-nav .nav-link:hover,
+.navbar-custom .navbar-nav .nav-link.active {
+    color: var(--tg-brand) !important;
+}
+
+.navbar-custom .dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 12px var(--tg-ink-10);
+    border-radius: var(--tg-radius-btn);
+}
+
+.navbar-custom .dropdown-item:hover {
+    background-color: var(--tg-cream);
+    color: var(--tg-brand);
+}
+
+.navbar-custom .navbar-collapse {
+    background-color: var(--tg-surface);
+    padding: var(--tg-sp-lg);
+    margin-top: var(--tg-sp-sm);
+    border-radius: var(--tg-radius-btn);
+    box-shadow: 0 10px 15px var(--tg-ink-10);
+}
+
+/* ─────────────────────────────────────────────────────
+   04. Reduced-motion
+   ───────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration:        0.01ms !important;
+        animation-iteration-count: 1      !important;
+        transition-duration:       0.01ms !important;
+        scroll-behavior:           auto   !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   05. Page hero
+   ───────────────────────────────────────────────────── */
+.tg-page-hero {
+    padding: 60px 0 48px;
+    text-align: center;
+}
+
+.tg-page-hero .tg-eyebrow {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--tg-ink-muted);
+    margin-bottom: 10px;
+}
+
+.tg-page-hero h1 {
+    font-family: var(--tg-font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--tg-ink);
+    margin-bottom: 14px;
+}
+
+.tg-page-hero h1 em {
+    font-style: italic;
+    color: var(--tg-brand);
+}
+
+.tg-page-hero > p {
+    font-size: 1rem;
+    color: var(--tg-ink-muted);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────────────
+   06. Seção história
+   ───────────────────────────────────────────────────── */
+.tg-about { padding: 0 0 80px; }
+
+.tg-about-text p {
+    font-size: 0.9375rem;
+    color: var(--tg-ink-muted);
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.tg-about-text p strong { color: var(--tg-ink); }
+
+.tg-quote-block {
+    border-left: 3px solid var(--tg-green);
+    padding: 14px 20px;
+    margin: 28px 0;
+    background: rgba(34, 197, 94, .06);
+    border-radius: 0 10px 10px 0;
+}
+
+.tg-quote-block p {
+    font-family: var(--tg-font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--tg-ink);
+    margin: 0;
+    line-height: 1.65;
+}
+
+.tg-closing {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--tg-green);
+    line-height: 1.75;
+    margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────────────────
+   07. Imagem sticky + caption
+   ─────────────────────────────────────────────────────
+   top usa var(--tg-header-h) + folga para não colidir
+   com o header em nenhum breakpoint.
+   ───────────────────────────────────────────────────── */
+.tg-about-img-wrap {
+    position: sticky;
+    top: calc(var(--tg-header-h) + 1.25rem);
+}
+
+.tg-about-img-wrap img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--tg-radius-card);
+    display: block;
+    box-shadow: var(--tg-shadow-img);
+    transition: transform var(--tg-ease-slow), box-shadow var(--tg-ease-slow);
+}
+
+.tg-about-img-wrap img:hover {
+    transform: scale(1.015);
+    box-shadow: var(--tg-shadow-img-lg);
+}
+
+.tg-img-caption {
+    background: var(--tg-surface);
+    border: 1px solid var(--tg-ink-10);
+    border-top: 3px solid var(--tg-green);
+    border-radius: var(--tg-radius-card);
+    padding: 20px 24px;
+    margin-top: 16px;
+}
+
+.tg-img-caption h4 {
+    font-family: var(--tg-font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--tg-ink);
+    margin-bottom: 4px;
+}
+
+.tg-img-caption p {
+    font-size: 0.8125rem;
+    color: var(--tg-ink-muted);
+    margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────
+   08. Valores / pillars
+   ───────────────────────────────────────────────────── */
+.tg-values {
+    background: var(--tg-surface);
+    padding: 64px 0;
+    border-top: 1px solid var(--tg-ink-10);
+}
+
+.tg-pillar-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 16px;
+}
+
+.tg-pillar-icon.gold  { background: #FFF8E1; color: #F59E0B; }
+.tg-pillar-icon.green { background: #F0FFF4; color: #22C55E; }
+.tg-pillar-icon.red   { background: #FFF1F0; color: #EF4444; }
+
+.tg-pillar-title {
+    font-family: var(--tg-font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--tg-ink);
+    margin-bottom: 8px;
+}
+
+.tg-pillar-text {
+    font-size: 0.84rem;
+    color: var(--tg-ink-muted);
+    line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────────────────
+   09. Section utilities
+   ───────────────────────────────────────────────────── */
+.tg-section-title {
+    font-family: var(--tg-font-display);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    color: var(--tg-ink);
+    margin-bottom: 8px;
+}
+
+.tg-eyebrow {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--tg-ink-muted);
+    margin-bottom: 8px;
+}
+
+/* ─────────────────────────────────────────────────────
+   10. WhatsApp FAB
+   ───────────────────────────────────────────────────── */
+.tg-fab {
+    position: fixed;
+    bottom: 1.375rem;
+    right: 1.125rem;
+    z-index: 1050;
+    width: 3.375rem;
+    height: 3.375rem;
+    border-radius: 50%;
+    background: var(--tg-wa);
+    color: var(--tg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: var(--tg-shadow-wa);
+    transition: transform var(--tg-ease), box-shadow var(--tg-ease);
+    text-decoration: none;
+}
+
+.tg-fab:is(:hover, :focus-visible) {
+    color: var(--tg-surface);
+    transform: scale(1.08);
+    box-shadow: var(--tg-shadow-wa-lg);
+    outline: none;
+}
+
+/* ─────────────────────────────────────────────────────
+   11. Footer
+   ───────────────────────────────────────────────────── */
+.footer {
+    border-top: 1px solid var(--tg-white-06);
+}
+
+/* ─────────────────────────────────────────────────────
+   12. Responsivo
+   ───────────────────────────────────────────────────── */
+@media (max-width: 991px) {
+    .navbar-custom .navbar-collapse {
+        position: absolute;
+        top: calc(var(--tg-navbar-h) - 1px);
+        left: 0;
+        right: 0;
+        z-index: 1030;
+    }
+
+    /* Sticky não funciona bem em viewport menor */
+    .tg-about-img-wrap { position: static; }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --tg-navbar-h: 56px;
+        --tg-header-h: 96px;
+    }
+
+    .logo-nav { height: 44px; }
+
+    .navbar-custom .navbar-nav .nav-link {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.9rem;
+    }
+
+    .tg-page-hero { padding: 40px 0 32px; }
+    .tg-about     { padding: 0 0 56px; }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --tg-navbar-h: 52px;
+        --tg-header-h: 92px;
+    }
+
+    .logo-nav { height: 40px; }
+
+    .navbar-custom .navbar-nav .nav-link {
+        padding: 0.45rem 0.65rem !important;
+        font-size: 0.85rem;
+    }
+}

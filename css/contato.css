@@ -1,0 +1,590 @@
+/* ════════════════════════════════════════════════════
+   Famiglia Tegon — contato.css
+   ════════════════════════════════════════════════════
+   Índice:
+   01. Design tokens  (header SINCRONIZADO com a suite)
+   02. Reset mínimo
+   03. Header fixo
+   04. Reduced-motion
+   05. Hero escuro
+   06. Seção de contato
+       06a. Wrapper (card)
+       06b. Intro (esquerda)
+       06c. Divisor
+       06d. Ação (direita)
+   07. WhatsApp FAB
+   08. Footer
+   09. Keyframes
+   10. Responsivo
+   ════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────
+   01. Design tokens
+   ───────────────────────────────────────────────────── */
+:root {
+    --tg-cream:         #FAF7F2;
+    --tg-ink:           #1C1A16;
+    --tg-ink-muted:     #6B6760;
+    --tg-surface:       #ffffff;
+    --tg-brand:         #c41212;
+    --tg-accent:        #F59E0B;
+    --tg-wa:            #25D366;
+
+    --tg-ink-06:        rgba(28, 26, 22, .06);
+    --tg-ink-10:        rgba(28, 26, 22, .10);
+    --tg-ink-22:        rgba(28, 26, 22, .22);
+    --tg-brand-10:      rgba(196, 18, 18, .10);
+    --tg-brand-18:      rgba(196, 18, 18, .18);
+    --tg-brand-20:      rgba(196, 18, 18, .20);
+    --tg-brand-28:      rgba(196, 18, 18, .28);
+    --tg-accent-12:     rgba(245, 158, 11, .12);
+    --tg-accent-18:     rgba(245, 158, 11, .18);
+    --tg-wa-40:         rgba(37, 211, 102, .40);
+    --tg-wa-50:         rgba(37, 211, 102, .50);
+    --tg-white-06:      rgba(255, 255, 255, .06);
+    --tg-white-58:      rgba(255, 255, 255, .58);
+
+    --tg-gradient-brand: linear-gradient(90deg, var(--tg-brand), var(--tg-accent));
+
+    --tg-font-display:  'Playfair Display', Georgia, serif;
+    --tg-font-body:     'DM Sans', system-ui, sans-serif;
+
+    --tg-topbar-h:      40px;
+    --tg-navbar-h:      65px;
+    --tg-header-h:      calc(var(--tg-topbar-h) + var(--tg-navbar-h));
+
+    --tg-sp-xs:         0.5rem;
+    --tg-sp-sm:         0.75rem;
+    --tg-sp-lg:         1.5rem;
+    --tg-sp-xl:         2rem;
+    --tg-sp-2xl:        3rem;
+    --tg-sp-3xl:        4.25rem;
+
+    --tg-radius-card:   1rem;
+    --tg-radius-btn:    0.625rem;
+    --tg-shadow-card:   0 8px 36px var(--tg-ink-06);
+    --tg-shadow-btn:    0 6px 20px var(--tg-brand-28);
+    --tg-shadow-wa:     0 4px 16px var(--tg-wa-40);
+    --tg-shadow-wa-lg:  0 6px 22px var(--tg-wa-50);
+    --tg-ease:          .2s ease;
+    --tg-ease-fast:     .15s ease;
+    --tg-ease-slow:     .3s ease;
+}
+
+/* ─────────────────────────────────────────────────────
+   02. Reset mínimo
+   ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* ─────────────────────────────────────────────────────
+   03. Header fixo
+   ───────────────────────────────────────────────────── */
+body {
+    background-color: var(--tg-cream);
+    font-family: var(--tg-font-body);
+    color: var(--tg-ink);
+    margin: 0;
+    padding-top: var(--tg-header-h);
+}
+
+.tg-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--tg-topbar-h);
+    z-index: 1031;
+    background-color: #111 !important;
+    display: flex;
+    align-items: center;
+}
+
+.navbar.navbar-custom {
+    top: var(--tg-topbar-h) !important;
+    height: var(--tg-navbar-h);
+    background-color: var(--tg-surface) !important;
+    border-bottom: 1px solid var(--tg-ink-10);
+}
+
+.logo-nav {
+    height: 52px;
+    width: auto;
+    transition: height var(--tg-ease-slow);
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: var(--tg-ink) !important;
+    font-family: var(--tg-font-body);
+    font-weight: 500;
+    padding: 0.625rem 0.9375rem !important;
+    transition: color var(--tg-ease-slow);
+}
+
+.navbar-custom .navbar-nav .nav-link:hover,
+.navbar-custom .navbar-nav .nav-link.active {
+    color: var(--tg-brand) !important;
+}
+
+.navbar-custom .dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 12px var(--tg-ink-10);
+    border-radius: var(--tg-radius-btn);
+}
+
+.navbar-custom .dropdown-item:hover {
+    background-color: var(--tg-cream);
+    color: var(--tg-brand);
+}
+
+.navbar-custom .navbar-collapse {
+    background-color: var(--tg-surface);
+    padding: var(--tg-sp-lg);
+    margin-top: var(--tg-sp-sm);
+    border-radius: var(--tg-radius-btn);
+    box-shadow: 0 10px 15px var(--tg-ink-10);
+}
+
+/* ─────────────────────────────────────────────────────
+   04. Reduced-motion
+   ───────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration:        0.01ms !important;
+        animation-iteration-count: 1      !important;
+        transition-duration:       0.01ms !important;
+        scroll-behavior:           auto   !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   05. Hero escuro
+   ───────────────────────────────────────────────────── */
+.contact-hero {
+    padding: 5rem 0 3.625rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--tg-ink);
+}
+
+.contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, var(--tg-brand-18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, var(--tg-accent-12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.contact-hero .spice-dot {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.contact-hero .spice-dot:nth-child(1) {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, var(--tg-brand-20) 0%, transparent 70%);
+    top: -50px;
+    right: 4%;
+}
+
+.contact-hero .spice-dot:nth-child(2) {
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, var(--tg-accent-18) 0%, transparent 70%);
+    bottom: 1rem;
+    right: 18%;
+}
+
+.contact-hero .hero-eyebrow {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--tg-accent);
+    margin-bottom: 0.75rem;
+    animation: tgFadeUp 0.65s ease both;
+}
+
+.contact-hero .hero-title {
+    font-family: var(--tg-font-display);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 600;
+    color: var(--tg-surface);
+    line-height: 1.15;
+    animation: tgFadeUp 0.65s 0.12s ease both;
+}
+
+.contact-hero .hero-title em {
+    font-style: italic;
+    color: var(--tg-accent);
+}
+
+.contact-hero .hero-sub {
+    font-size: 0.975rem;
+    color: var(--tg-white-58);
+    max-width: 460px;
+    margin-top: 0.875rem;
+    line-height: 1.7;
+    animation: tgFadeUp 0.65s 0.24s ease both;
+}
+
+.contact-hero .hero-divider {
+    width: 3.5rem;
+    height: 3px;
+    background: var(--tg-gradient-brand);
+    border-radius: 2px;
+    margin: 1.25rem 0 0;
+    animation: tgFadeUp 0.65s 0.34s ease both;
+}
+
+/* ─────────────────────────────────────────────────────
+   06. Seção de contato
+   ───────────────────────────────────────────────────── */
+.tg-contact-section {
+    padding: var(--tg-sp-3xl) 0 6rem;
+    background: var(--tg-cream);
+}
+
+/* 06a. Wrapper */
+.tg-contact-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--tg-sp-2xl);
+    background: var(--tg-surface);
+    border: 1px solid var(--tg-ink-10);
+    border-radius: var(--tg-radius-card);
+    padding: 4rem 3.5rem;
+    box-shadow: var(--tg-shadow-card);
+    position: relative;
+    overflow: hidden;
+    animation: tgFadeUp 0.65s 0.1s ease both;
+}
+
+/* Faixa decorativa */
+.tg-contact-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--tg-gradient-brand);
+}
+
+/* 06b. Intro (esquerda) */
+.tg-contact-intro {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--tg-sp-lg);
+}
+
+.tg-contact-logo-img {
+    width: 160px;
+    height: auto;
+    display: block;
+}
+
+.tg-contact-heading {
+    font-family: var(--tg-font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--tg-ink);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.tg-contact-heading em {
+    font-style: italic;
+    color: var(--tg-brand);
+}
+
+.tg-contact-body {
+    font-size: 0.95rem;
+    color: var(--tg-ink-muted);
+    line-height: 1.75;
+    margin: 0;
+    max-width: 380px;
+}
+
+.tg-contact-promise {
+    display: flex;
+    align-items: center;
+    gap: var(--tg-sp-xs);
+    font-size: 0.8125rem;
+    color: var(--tg-ink-muted);
+    margin: 0;
+    padding-top: var(--tg-sp-sm);
+    border-top: 1px solid var(--tg-ink-10);
+}
+
+.tg-contact-promise i {
+    color: var(--tg-accent);
+    font-size: 0.9rem;
+}
+
+/* 06c. Divisor vertical */
+.tg-contact-divider {
+    width: 1px;
+    align-self: stretch;
+    background: var(--tg-ink-10);
+    flex-shrink: 0;
+}
+
+/* 06d. Ação (direita) */
+.tg-contact-action {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--tg-sp-lg);
+}
+
+.tg-action-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--tg-ink-muted);
+    margin: 0;
+}
+
+.tg-email-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--tg-font-display);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 600;
+    color: var(--tg-ink);
+    text-decoration: none;
+    transition: color var(--tg-ease);
+    word-break: break-all;
+}
+
+.tg-email-display i {
+    font-size: 1.3rem;
+    color: var(--tg-brand);
+    flex-shrink: 0;
+    transition: transform var(--tg-ease);
+}
+
+.tg-email-display:is(:hover, :focus-visible) {
+    color: var(--tg-brand);
+    outline: none;
+}
+
+.tg-email-display:hover i { transform: scale(1.15); }
+
+.tg-action-btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tg-sp-sm);
+}
+
+.tg-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--tg-sp-xs);
+    padding: 0.875rem 2rem;
+    background: var(--tg-brand);
+    color: var(--tg-surface);
+    font-family: var(--tg-font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: .03em;
+    border-radius: var(--tg-radius-btn);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition:
+        opacity      var(--tg-ease-fast),
+        transform    var(--tg-ease-fast),
+        box-shadow   var(--tg-ease-fast);
+}
+
+.tg-btn-primary:hover {
+    color: var(--tg-surface);
+    opacity: .91;
+    transform: translateY(-1px);
+    box-shadow: var(--tg-shadow-btn);
+}
+
+.tg-btn-primary:focus-visible {
+    outline: 2px solid var(--tg-brand);
+    outline-offset: 3px;
+}
+
+.tg-btn-primary:active { transform: scale(.98); }
+
+/* Botão secundário (copiar e-mail) */
+.tg-btn-copy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--tg-sp-xs);
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--tg-ink);
+    font-family: var(--tg-font-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: .03em;
+    border: 1.5px solid var(--tg-ink-22);
+    border-radius: var(--tg-radius-btn);
+    cursor: pointer;
+    transition:
+        border-color var(--tg-ease),
+        color        var(--tg-ease),
+        background   var(--tg-ease);
+}
+
+.tg-btn-copy:hover {
+    border-color: var(--tg-brand);
+    color: var(--tg-brand);
+    background: var(--tg-brand-10);
+}
+
+.tg-btn-copy:focus-visible {
+    outline: 2px solid var(--tg-brand);
+    outline-offset: 3px;
+}
+
+/* Estado "copiado" */
+.tg-btn-copy--done {
+    border-color: #16a34a;
+    color: #16a34a;
+    background: rgba(22, 163, 74, .08);
+}
+
+/* Feedback aria-live */
+.tg-copy-feedback {
+    font-size: 0.8rem;
+    color: #16a34a;
+    margin: 0;
+    min-height: 1.2em;
+    transition: opacity var(--tg-ease);
+}
+
+/* ─────────────────────────────────────────────────────
+   07. WhatsApp FAB
+   ───────────────────────────────────────────────────── */
+.tg-fab {
+    position: fixed;
+    bottom: 1.375rem;
+    right: 1.125rem;
+    z-index: 1050;
+    width: 3.375rem;
+    height: 3.375rem;
+    border-radius: 50%;
+    background: var(--tg-wa);
+    color: var(--tg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: var(--tg-shadow-wa);
+    transition: transform var(--tg-ease-fast), box-shadow var(--tg-ease-fast);
+    text-decoration: none;
+}
+
+.tg-fab:is(:hover, :focus-visible) {
+    color: var(--tg-surface);
+    transform: scale(1.08);
+    box-shadow: var(--tg-shadow-wa-lg);
+    outline: none;
+}
+
+/* ─────────────────────────────────────────────────────
+   08. Footer
+   ───────────────────────────────────────────────────── */
+.footer {
+    border-top: 1px solid var(--tg-white-06);
+}
+
+/* ─────────────────────────────────────────────────────
+   09. Keyframes
+   ───────────────────────────────────────────────────── */
+@keyframes tgFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ─────────────────────────────────────────────────────
+   10. Responsivo
+   ───────────────────────────────────────────────────── */
+@media (max-width: 991px) {
+    .navbar-custom .navbar-collapse {
+        position: absolute;
+        top: calc(var(--tg-navbar-h) - 1px);
+        left: 0;
+        right: 0;
+        z-index: 1030;
+    }
+
+    .tg-contact-wrapper {
+        padding: 3rem 2.5rem;
+        gap: var(--tg-sp-xl);
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --tg-navbar-h: 56px;
+        --tg-header-h: 96px;
+    }
+
+    .logo-nav { height: 44px; }
+
+    .navbar-custom .navbar-nav .nav-link {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.9rem;
+    }
+
+    .contact-hero { padding: 3.75rem 0 2.875rem; }
+
+    /* Card empilha */
+    .tg-contact-wrapper {
+        flex-direction: column;
+        padding: 2.5rem 2rem;
+        gap: var(--tg-sp-xl);
+        text-align: center;
+    }
+
+    /* Divisor vira horizontal */
+    .tg-contact-divider {
+        width: 4rem;
+        height: 1px;
+        align-self: auto;
+    }
+
+    .tg-contact-body    { max-width: 100%; }
+    .tg-contact-promise { justify-content: center; }
+    .tg-email-display   { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --tg-navbar-h: 52px;
+        --tg-header-h: 92px;
+    }
+
+    .logo-nav { height: 40px; }
+
+    .navbar-custom .navbar-nav .nav-link {
+        padding: 0.45rem 0.65rem !important;
+        font-size: 0.85rem;
+    }
+
+    .tg-contact-section { padding: 3rem 0 4rem; }
+    .tg-contact-wrapper { padding: 2rem 1.5rem; }
+
+    .tg-btn-primary,
+    .tg-btn-copy { width: 100%; }
+}

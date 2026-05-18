@@ -1,0 +1,586 @@
+/* ════════════════════════════════════════════════════
+   Famiglia Tegon — home.css
+   ════════════════════════════════════════════════════
+   Índice:
+   01. Design tokens
+   02. Reset mínimo
+   03. Header fixo  ← fonte única de verdade para a suite
+   04. Reduced-motion
+   05. Hero carousel
+   06. Pillars
+   07. Section utilities
+   08. Product cards
+   09. CTA banner
+   10. Testimonials
+   11. WhatsApp FAB
+   12. Footer
+   13. Responsivo
+   ════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────
+   01. Design tokens
+   ───────────────────────────────────────────────────── */
+:root {
+    /* Paleta base */
+    --tg-cream:         #FAF7F2;
+    --tg-ink:           #1C1A16;
+    --tg-ink-muted:     #6B6760;
+    --tg-surface:       #ffffff;
+    --tg-brand:         #c41212;
+    --tg-accent:        #F59E0B;
+    --tg-wa:            #25D366;
+
+    /* Alpha */
+    --tg-ink-06:        rgba(28, 26, 22, .06);
+    --tg-ink-10:        rgba(28, 26, 22, .10);
+    --tg-ink-22:        rgba(28, 26, 22, .22);
+    --tg-wa-40:         rgba(37, 211, 102, .40);
+    --tg-wa-50:         rgba(37, 211, 102, .50);
+    --tg-white-06:      rgba(255, 255, 255, .06);
+    --tg-white-80:      rgba(255, 255, 255, .80);
+
+    /* Tipografia */
+    --tg-font-display:  'Playfair Display', Georgia, serif;
+    --tg-font-body:     'DM Sans', system-ui, sans-serif;
+
+ 
+    --tg-topbar-h:      40px;
+    --tg-navbar-h:      65px;
+    --tg-header-h:      calc(var(--tg-topbar-h) + var(--tg-navbar-h));
+
+    /* Espaçamento */
+    --tg-sp-xs:         0.5rem;
+    --tg-sp-sm:         0.75rem;
+    --tg-sp-md:         1rem;
+    --tg-sp-lg:         1.5rem;
+
+    /* Misc */
+    --tg-radius-card:   16px;
+    --tg-radius-btn:    10px;
+    --tg-shadow-card:   0 12px 32px var(--tg-ink-06);
+    --tg-shadow-wa:     0 4px 16px var(--tg-wa-40);
+    --tg-shadow-wa-lg:  0 6px 22px var(--tg-wa-50);
+    --tg-ease:          .2s ease;
+    --tg-ease-slow:     .4s ease;
+}
+
+/* ─────────────────────────────────────────────────────
+   02. Reset mínimo
+   ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* ─────────────────────────────────────────────────────
+   03. Header fixo
+   ─────────────────────────────────────────────────────*/
+body {
+    background-color: var(--tg-cream);
+    font-family: var(--tg-font-body);
+    color: var(--tg-ink);
+    margin: 0;
+    padding-top: var(--tg-header-h);
+}
+
+.tg-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--tg-topbar-h);
+    z-index: 1031;
+    background-color: #111 !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Escopo .navbar-custom garante que os overrides não
+   vazam para dropdowns e sub-itens do Bootstrap       */
+.navbar.navbar-custom {
+    top: var(--tg-topbar-h) !important;
+    height: var(--tg-navbar-h);
+    background-color: var(--tg-surface) !important;
+    border-bottom: 1px solid var(--tg-ink-10);
+}
+
+.logo-nav {
+    height: 52px;
+    width: auto;
+    transition: height var(--tg-ease);
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: var(--tg-ink) !important;
+    font-family: var(--tg-font-body);
+    font-weight: 500;
+    padding: 0.625rem 0.9375rem !important;
+    transition: color var(--tg-ease);
+}
+
+.navbar-custom .navbar-nav .nav-link:hover,
+.navbar-custom .navbar-nav .nav-link.active {
+    color: var(--tg-brand) !important;
+}
+
+.navbar-custom .dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 12px var(--tg-ink-10);
+    border-radius: var(--tg-radius-btn);
+}
+
+.navbar-custom .dropdown-item:hover {
+    background-color: var(--tg-cream);
+    color: var(--tg-brand);
+}
+
+.navbar-custom .navbar-collapse {
+    background-color: var(--tg-surface);
+    padding: var(--tg-sp-lg);
+    margin-top: var(--tg-sp-sm);
+    border-radius: var(--tg-radius-btn);
+    box-shadow: 0 10px 15px var(--tg-ink-10);
+}
+
+/* ─────────────────────────────────────────────────────
+   04. Reduced-motion
+   ───────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration:        0.01ms !important;
+        animation-iteration-count: 1      !important;
+        transition-duration:       0.01ms !important;
+        scroll-behavior:           auto   !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   05. Hero carousel
+   ───────────────────────────────────────────────────── */
+.carousel-img {
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(85%);
+    display: block;
+}
+
+.carousel-caption {
+    background: linear-gradient(transparent, rgba(0, 0, 0, .60));
+    padding: 40px 20px 20px !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.carousel-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--tg-surface);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, .80);
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+    color: var(--tg-surface);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, .80);
+    margin-bottom: 0;
+}
+
+/* Variante .tg-carousel — caption centralizada flutuante */
+.tg-carousel .carousel-caption {
+    background: rgba(0, 0, 0, .50);
+    border-radius: 12px;
+    padding: 16px 24px !important;
+    bottom: 28px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 90%;
+}
+
+.tg-carousel .carousel-caption h5 {
+    font-family: var(--tg-font-display);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.tg-carousel .carousel-caption p {
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    margin: 0;
+    opacity: .90;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--tg-ink-muted);
+    opacity: .35;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: var(--tg-ink);
+}
+
+/* ─────────────────────────────────────────────────────
+   06. Pillars
+   ───────────────────────────────────────────────────── */
+.tg-pillars {
+    background: var(--tg-surface);
+    padding: 64px 0;
+}
+
+.tg-pillar-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 16px;
+}
+
+.tg-pillar-icon.gold  { background: #FFF8E1; color: #F59E0B; }
+.tg-pillar-icon.green { background: #F0FFF4; color: #22C55E; }
+.tg-pillar-icon.red   { background: #FFF1F0; color: #EF4444; }
+
+.tg-pillar-title {
+    font-family: var(--tg-font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--tg-ink);
+    margin-bottom: 8px;
+}
+
+.tg-pillar-text {
+    font-size: 0.84rem;
+    color: var(--tg-ink-muted);
+    line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────────────────
+   07. Section utilities
+   ───────────────────────────────────────────────────── */
+.tg-section-title {
+    font-family: var(--tg-font-display);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    color: var(--tg-ink);
+    margin-bottom: 8px;
+}
+
+.tg-eyebrow {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--tg-ink-muted);
+    margin-bottom: 8px;
+}
+
+/* ─────────────────────────────────────────────────────
+   08. Product cards
+   ───────────────────────────────────────────────────── */
+.tg-products { padding: 64px 0; }
+
+.tg-prod-card {
+    background: var(--tg-surface);
+    border: 1px solid var(--tg-ink-10);
+    border-radius: var(--tg-radius-card);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition:
+        border-color var(--tg-ease),
+        transform    var(--tg-ease),
+        box-shadow   var(--tg-ease);
+}
+
+.tg-prod-card:hover {
+    border-color: var(--tg-ink-22);
+    transform: translateY(-3px);
+    box-shadow: var(--tg-shadow-card);
+}
+
+.tg-prod-card .card-img-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;      /* proporção uniforme entre os 3 cards      */
+    overflow: hidden;
+    background: #f0ede8;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tg-prod-card .card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;       /* imagem 100% visível, sem corte            */
+    object-position: center;
+    display: block;
+    padding: 0.75rem;          /* pequena folga para não colar nas bordas   */
+    transition: transform var(--tg-ease-slow);
+}
+
+.tg-prod-card:hover .card-img-wrap img { transform: scale(1.04); }
+
+.tg-prod-card .card-body {
+    padding: 18px 18px 12px;
+    flex: 1;
+}
+
+.tg-prod-card .card-title {
+    font-family: var(--tg-font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--tg-ink);
+    margin-bottom: 6px;
+}
+
+.tg-prod-card .card-text {
+    font-size: 0.8125rem;
+    color: var(--tg-ink-muted);
+    line-height: 1.6;
+}
+
+.tg-prod-card .card-footer-inner { padding: 12px 18px 18px; }
+
+.tg-outline-btn {
+    display: block;
+    width: 100%;
+    padding: 9px 0;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: var(--tg-font-body);
+    color: var(--tg-ink);
+    border: 1px solid var(--tg-ink-22);
+    border-radius: var(--tg-radius-btn);
+    text-decoration: none;
+    transition: background var(--tg-ease), border-color var(--tg-ease);
+}
+
+.tg-outline-btn:hover {
+    background: var(--tg-cream);
+    color: var(--tg-ink);
+}
+
+/* ─────────────────────────────────────────────────────
+   09. CTA banner
+   ─────────────────────────────────────────────────────
+   background-attachment: fixed ativa parallax apenas em
+   desktop (≥1200px) — evita artefato de repaint iOS.
+   ───────────────────────────────────────────────────── */
+.tg-cta-banner {
+    position: relative;
+    padding: 100px 0;
+    text-align: center;
+    background: url('../imagens/Tempero.jpg') center / cover no-repeat scroll;
+}
+
+.tg-cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .65);
+}
+
+.tg-cta-banner .inner {
+    position: relative;
+    z-index: 1;
+}
+
+.tg-cta-banner h2 {
+    font-family: var(--tg-font-display);
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 600;
+    color: var(--tg-surface);
+    margin-bottom: 14px;
+}
+
+.tg-cta-banner p {
+    font-size: 1.05rem;
+    color: var(--tg-white-80);
+    margin-bottom: 28px;
+}
+
+.tg-banner-btn {
+    display: inline-block;
+    padding: 13px 40px;
+    background: var(--tg-accent);
+    color: var(--tg-ink) !important;
+    font-family: var(--tg-font-body);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: var(--tg-radius-btn);
+    text-decoration: none;
+    transition: opacity var(--tg-ease), transform var(--tg-ease);
+}
+
+.tg-banner-btn:hover  { opacity: .90; }
+.tg-banner-btn:active { transform: scale(.98); }
+
+/* ─────────────────────────────────────────────────────
+   10. Testimonials
+   ───────────────────────────────────────────────────── */
+.tg-testimonials {
+    background: var(--tg-surface);
+    padding: 72px 0;
+}
+
+.tg-quote {
+    background: var(--tg-cream);
+    border: 1px solid var(--tg-ink-10);
+    border-radius: var(--tg-radius-card);
+    padding: 32px 36px;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tg-quote p {
+    font-family: var(--tg-font-display);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--tg-ink);
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+
+.tg-quote cite {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--tg-ink-muted);
+    font-style: normal;
+}
+
+/* ─────────────────────────────────────────────────────
+   11. WhatsApp FAB
+   ───────────────────────────────────────────────────── */
+.tg-fab {
+    position: fixed;
+    bottom: 1.375rem;
+    right: 1.125rem;
+    z-index: 1050;
+    width: 3.375rem;
+    height: 3.375rem;
+    border-radius: 50%;
+    background: var(--tg-wa);
+    color: var(--tg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: var(--tg-shadow-wa);
+    transition: transform var(--tg-ease), box-shadow var(--tg-ease);
+    text-decoration: none;
+}
+
+.tg-fab:is(:hover, :focus-visible) {
+    color: var(--tg-surface);
+    transform: scale(1.08);
+    box-shadow: var(--tg-shadow-wa-lg);
+    outline: none;
+}
+
+/* ─────────────────────────────────────────────────────
+   12. Footer
+   ───────────────────────────────────────────────────── */
+.footer {
+    border-top: 1px solid var(--tg-white-06);
+}
+
+/* ─────────────────────────────────────────────────────
+   13. Responsivo  (mobile-first)
+   ─────────────────────────────────────────────────────
+   Escada de header SINCRONIZADA em toda a suite:
+     ≥ 992px  → navbar-h: 65px  / header-h: 105px
+     ≤ 991px  → collapse absoluto imediatamente abaixo da navbar
+     ≤ 767px  → navbar-h: 56px  / header-h:  96px
+     ≤ 480px  → navbar-h: 52px  / header-h:  92px
+   ───────────────────────────────────────────────────── */
+
+/* Tablet / navbar colapsada */
+@media (max-width: 991px) {
+    .navbar-custom .navbar-collapse {
+        position: absolute;
+        top: calc(var(--tg-navbar-h) - 1px);
+        left: 0;
+        right: 0;
+        z-index: 1030;
+    }
+
+    .carousel-img   { height: 70vh; }
+    .carousel-title { font-size: 2rem; }
+    .carousel-caption p { font-size: 0.95rem; }
+}
+
+/* Parallax seguro — somente desktop largo */
+@media (min-width: 1200px) {
+    .carousel-img   { height: 85vh; }
+    .carousel-title { font-size: 3rem; }
+    .carousel-caption p { font-size: 1.3rem; }
+    .tg-cta-banner  { background-attachment: fixed; }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    :root {
+        --tg-navbar-h: 56px;
+        --tg-header-h: 96px;
+    }
+
+    .logo-nav { height: 44px; }
+
+    .navbar-custom .navbar-nav .nav-link {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.9rem;
+    }
+
+    .carousel-img {
+        min-height: 300px;
+        height: auto;
+        object-fit: contain;
+        filter: brightness(70%);
+    }
+
+    .carousel-caption {
+        padding: 5px 5px !important;
+        
+    }
+
+    .carousel-title { font-size: 0.0rem; }
+    .carousel-caption p { font-size: 0.0rem; }
+
+    .tg-cta-banner { padding: 52px 0; }
+    .tg-quote      { padding: 10px 20px; }
+    /* aspect-ratio mantém proporção — sem override necessário */
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+    :root {
+        --tg-navbar-h: 52px;
+        --tg-header-h: 92px;
+    }
+
+    .logo-nav { height: 40px; }
+
+    .navbar-custom .navbar-nav .nav-link {
+        padding: 0.45rem 0.65rem !important;
+        font-size: 0.85rem;
+    }
+
+    .carousel-img     { min-height: 250px; object-fit: contain; }
+    .carousel-title   { font-size: 0.5rem; }
+    .carousel-caption p { font-size: 0.5rem; }
+}
