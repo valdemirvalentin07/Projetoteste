@@ -11,10 +11,6 @@
     --tg-green:         #22C55E;
     --tg-wa:            #25D366;
 
-    /* Bandeira italiana — usado discretamente na seção artesanal */
-    --tg-it-green:      #009246;
-    --tg-it-red:        #CE2B37;
-
     --tg-ink-06:        rgba(28, 26, 22, .06);
     --tg-ink-10:        rgba(28, 26, 22, .10);
     --tg-ink-22:        rgba(28, 26, 22, .22);
@@ -29,19 +25,14 @@
     --tg-navbar-h:      65px;
     --tg-header-h:      calc(var(--tg-topbar-h) + var(--tg-navbar-h));
 
-    --tg-sp-xs:         0.5rem;
     --tg-sp-sm:         0.75rem;
     --tg-sp-lg:         1.5rem;
 
     --tg-radius-card:   16px;
     --tg-radius-btn:    10px;
-    --tg-shadow-img:    0 8px 32px var(--tg-ink-06);
-    --tg-shadow-img-lg: 0 14px 42px rgba(28, 26, 22, .16);
     --tg-shadow-wa:     0 4px 16px var(--tg-wa-40);
     --tg-shadow-wa-lg:  0 6px 22px var(--tg-wa-50);
     --tg-ease:          .2s ease;
-    --tg-ease-slow:     .4s ease;
-    --tg-ease-curve:    cubic-bezier(.22,.61,.36,1);
 }
 
 /* ─────────────────────────────────────────────────────
@@ -84,7 +75,6 @@ body {
 .logo-nav {
     height: 52px;
     width: auto;
-    transition: height var(--tg-ease);
 }
 
 .navbar-custom .navbar-nav .nav-link {
@@ -120,60 +110,7 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────
-   04. Reduced-motion
-   ───────────────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration:        0.01ms !important;
-        animation-iteration-count: 1      !important;
-        transition-duration:       0.01ms !important;
-        scroll-behavior:           auto   !important;
-    }
-}
-
-/* ─────────────────────────────────────────────────────
-   05. Animações base
-   ───────────────────────────────────────────────────── */
-@keyframes tgFadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes tgFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@keyframes tgKenBurns {
-    from { transform: scale(1)    translate(0, 0); }
-    to   { transform: scale(1.05) translate(-4px, -2px); }
-}
-
-@keyframes tgGentleFloat {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-4px); }
-}
-
-/* Scroll-reveal: aplicado via IntersectionObserver */
-.tg-reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-        opacity .8s var(--tg-ease-curve),
-        transform .8s var(--tg-ease-curve);
-}
-
-.tg-reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.tg-reveal[data-delay="1"] { transition-delay: .10s; }
-.tg-reveal[data-delay="2"] { transition-delay: .20s; }
-.tg-reveal[data-delay="3"] { transition-delay: .30s; }
-
-/* ─────────────────────────────────────────────────────
-   06. Page hero — entrance em cascata
+   04. Page hero — estático
    ───────────────────────────────────────────────────── */
 .tg-page-hero {
     padding: 60px 0 48px;
@@ -188,7 +125,6 @@ body {
     text-transform: uppercase;
     color: var(--tg-ink-muted);
     margin-bottom: 10px;
-    animation: tgFadeUp .9s var(--tg-ease-curve) both .1s;
 }
 
 .tg-page-hero h1 {
@@ -198,7 +134,6 @@ body {
     line-height: 1.2;
     color: var(--tg-ink);
     margin-bottom: 14px;
-    animation: tgFadeUp .9s var(--tg-ease-curve) both .25s;
 }
 
 .tg-page-hero h1 em {
@@ -212,11 +147,10 @@ body {
     max-width: 520px;
     margin: 0 auto;
     line-height: 1.7;
-    animation: tgFadeUp .9s var(--tg-ease-curve) both .4s;
 }
 
 /* ─────────────────────────────────────────────────────
-   07. Seção história
+   05. Seção história
    ───────────────────────────────────────────────────── */
 .tg-about { padding: 0 0 80px; }
 
@@ -229,30 +163,14 @@ body {
 
 .tg-about-text p strong { color: var(--tg-ink); }
 
-/* Quote block com linha verde que cresce do topo */
+/* Quote block — borda verde estática à esquerda */
 .tg-quote-block {
-    position: relative;
+    border-left: 3px solid var(--tg-green);
     padding: 14px 20px;
     margin: 28px 0;
     background: rgba(34, 197, 94, .06);
     border-radius: 0 10px 10px 0;
-    overflow: hidden;
 }
-
-.tg-quote-block::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--tg-green);
-    transform-origin: top center;
-    transform: scaleY(0);
-    transition: transform .9s var(--tg-ease-curve) .2s;
-}
-
-.tg-quote-block.is-visible::before { transform: scaleY(1); }
 
 .tg-quote-block p {
     font-family: var(--tg-font-display);
@@ -272,14 +190,13 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────
-   08. Coluna direita sticky — carrossel + caption
+   06. Coluna direita sticky — carrossel + eyebrow
    ───────────────────────────────────────────────────── */
 .tg-about-side {
     position: sticky;
     top: calc(var(--tg-header-h) + 1.25rem);
 }
 
-/* Eyebrow acima do carrossel (decorativo) */
 .tg-side-eyebrow {
     display: flex;
     align-items: center;
@@ -302,11 +219,9 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────
-   09. Carrossel — versão lateral (coluna direita)
+   07. Carrossel — versão lateral (sem Ken Burns)
    ───────────────────────────────────────────────────── */
-.tg-carousel-wrap {
-    width: 100%;
-}
+.tg-carousel-wrap { width: 100%; }
 
 .tg-carousel {
     border-radius: var(--tg-radius-card);
@@ -324,7 +239,8 @@ body {
 
 .tg-carousel .carousel-item {
     height: 100%;
-    transition: opacity 1s ease-in-out !important;
+    /* Crossfade simples entre slides (transição funcional do Bootstrap) */
+    transition: opacity .6s ease-in-out !important;
 }
 
 .tg-carousel .carousel-item img {
@@ -335,12 +251,7 @@ body {
     display: block;
 }
 
-/* Ken Burns suave — só no slide ativo */
-.tg-carousel .carousel-item.active img {
-    animation: tgKenBurns 6.5s ease-out forwards;
-}
-
-/* Indicadores customizados */
+/* Indicadores (estado ativo estático) */
 .tg-carousel .carousel-indicators {
     bottom: 14px;
     margin-bottom: 0;
@@ -355,7 +266,6 @@ body {
     background: rgba(255, 255, 255, .55);
     backdrop-filter: blur(4px);
     opacity: 1;
-    transition: all .3s ease;
     margin: 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
 }
@@ -366,70 +276,8 @@ body {
     background: var(--tg-brand);
 }
 
-/* Controles (prev/next) — aparecem no hover */
-.tg-carousel .carousel-control-prev,
-.tg-carousel .carousel-control-next {
-    width: 12%;
-    opacity: 0;
-    transition: opacity .3s ease;
-}
-
-.tg-carousel:hover .carousel-control-prev,
-.tg-carousel:hover .carousel-control-next,
-.tg-carousel:focus-within .carousel-control-prev,
-.tg-carousel:focus-within .carousel-control-next {
-    opacity: 1;
-}
-
-.tg-carousel .carousel-control-prev-icon,
-.tg-carousel .carousel-control-next-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, .92);
-    background-size: 14px 14px;
-    border: 1px solid var(--tg-ink-10);
-    filter: invert(8%);
-}
-
-/* Tagline italiana — versão compacta para coluna lateral */
-.tg-italian-tagline {
-    margin: 22px auto 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    text-align: center;
-    flex-wrap: wrap;
-}
-
-.tg-italian-tagline .flag-stripe {
-    display: flex;
-    height: 3px;
-    width: 28px;
-    border-radius: 99px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.tg-italian-tagline .flag-stripe span {
-    flex: 1;
-}
-
-.tg-italian-tagline .flag-stripe span:nth-child(1) { background: var(--tg-it-green); }
-.tg-italian-tagline .flag-stripe span:nth-child(2) { background: #ffffff; border-top: 1px solid var(--tg-ink-10); border-bottom: 1px solid var(--tg-ink-10); }
-.tg-italian-tagline .flag-stripe span:nth-child(3) { background: var(--tg-it-red); }
-
-.tg-italian-tagline em {
-    font-family: var(--tg-font-display);
-    font-style: italic;
-    font-size: 0.9375rem;
-    color: var(--tg-ink-muted);
-    letter-spacing: .01em;
-}
-
 /* ─────────────────────────────────────────────────────
-   10. Valores / pillars — com hover refinado
+   08. Valores / pillars — estáticos
    ───────────────────────────────────────────────────── */
 .tg-values {
     background: var(--tg-surface);
@@ -446,16 +294,11 @@ body {
     justify-content: center;
     font-size: 1.5rem;
     margin: 0 auto 16px;
-    transition: transform .35s var(--tg-ease-curve);
 }
 
 .tg-pillar-icon.gold  { background: #FFF8E1; color: #F59E0B; }
 .tg-pillar-icon.green { background: #F0FFF4; color: #22C55E; }
 .tg-pillar-icon.red   { background: #FFF1F0; color: #EF4444; }
-
-.tg-pillar-item:hover .tg-pillar-icon {
-    transform: translateY(-4px) scale(1.05);
-}
 
 .tg-pillar-title {
     font-family: var(--tg-font-display);
@@ -472,7 +315,7 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────
-   11. Section utilities
+   09. Section utilities
    ───────────────────────────────────────────────────── */
 .tg-section-title {
     font-family: var(--tg-font-display);
@@ -493,7 +336,7 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────
-   12. WhatsApp FAB — com pulse sutil
+   10. WhatsApp FAB — sem pulse
    ───────────────────────────────────────────────────── */
 .tg-fab {
     position: fixed;
@@ -510,40 +353,25 @@ body {
     justify-content: center;
     font-size: 1.4rem;
     box-shadow: var(--tg-shadow-wa);
-    transition: transform var(--tg-ease), box-shadow var(--tg-ease);
+    transition: box-shadow var(--tg-ease);
     text-decoration: none;
-}
-
-.tg-fab::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 2px solid var(--tg-wa);
-    animation: tgWaPulse 2.4s ease-out infinite;
-}
-
-@keyframes tgWaPulse {
-    0%   { transform: scale(1);   opacity: .55; }
-    100% { transform: scale(1.5); opacity: 0;   }
 }
 
 .tg-fab:is(:hover, :focus-visible) {
     color: var(--tg-surface);
-    transform: scale(1.08);
     box-shadow: var(--tg-shadow-wa-lg);
     outline: none;
 }
 
 /* ─────────────────────────────────────────────────────
-   13. Footer
+   11. Footer
    ───────────────────────────────────────────────────── */
 .footer {
     border-top: 1px solid var(--tg-white-06);
 }
 
 /* ─────────────────────────────────────────────────────
-   14. Responsivo
+   12. Responsivo
    ───────────────────────────────────────────────────── */
 @media (max-width: 991px) {
     .navbar-custom .navbar-collapse {
@@ -573,9 +401,6 @@ body {
 
     .tg-page-hero { padding: 40px 0 32px; }
     .tg-about     { padding: 0 0 56px; }
-
-    .tg-italian-tagline { gap: 10px; }
-    .tg-italian-tagline em { font-size: 0.875rem; }
 }
 
 @media (max-width: 480px) {
@@ -589,10 +414,5 @@ body {
     .navbar-custom .navbar-nav .nav-link {
         padding: 0.45rem 0.65rem !important;
         font-size: 0.85rem;
-    }
-
-    .tg-italian-tagline {
-        flex-direction: column;
-        gap: 8px;
     }
 }
