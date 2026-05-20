@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secos | Famiglia Tegon</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/produtos.css">
+</head>
+
+<body>
+
+    <header>
+
+        <section class="tg-topbar">
+            <div class="container d-flex justify-content-end align-items-center" style="min-height:40px">
+                <div class="d-flex align-items-center gap-3">
+                    <a href="https://web.facebook.com/tegontemperos" target="_blank" rel="noopener noreferrer" class="text-white fs-5 lh-1" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                    <a href="https://instagram.com/tegon_27" target="_blank" rel="noopener noreferrer" class="text-white fs-5 lh-1" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-white fixed-top navbar-custom shadow-sm" aria-label="Navegação principal">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="imagens/Logo.png" alt="Famiglia Tegon" class="logo-nav">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="quemsomos.html">Quem somos</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" id="dropdownProdutos" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
+                                Produtos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownProdutos">
+                                <li><a class="dropdown-item" href="todosprodutos.html">Todos produtos</a></li>
+                                <li><a class="dropdown-item" href="produtos-conservas.html">Conservas</a></li>
+                                <li><a class="dropdown-item active" href="produtos-secos.html">Condimentos</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="receita.html">Receitas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- Hero da página -->
+            <div class="products-hero">
+                <p class="eyebrow">Linha de secos</p>
+                <h1>Produtos <em>Secos</em></h1>
+                <p>A próxima linha da Famiglia Tegon — produtos secos artesanais, selecionados com o mesmo cuidado das nossas conservas.</p>
+            </div>
+
+            <!-- Estado "Em breve" -->
+            <div class="empty-state">
+                <span class="empty-icon" aria-hidden="true">
+                    <i class="bi bi-bag-heart"></i>
+                </span>
+                <h3>Em <em>breve</em> na sua mesa</h3>
+                <p>Estamos preparando uma nova linha de produtos secos artesanais para completar a experiência Famiglia Tegon. Quer ser o primeiro a saber quando chegar?</p>
+                <a href="https://wa.me/5519997172221?text=Olá!%20Quero%20receber%20novidades%20sobre%20a%20linha%20de%20Secos%20da%20Famiglia%20Tegon" class="empty-cta" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-whatsapp" aria-hidden="true"></i>Quero receber novidades
+                </a>
+            </div>
+
+            <!--
+                ╔══════════════════════════════════════════════════════════════╗
+                ║  QUANDO TIVER OS PRODUTOS SECOS, REMOVA O .empty-state ACIMA ║
+                ║  E DUPLIQUE O TEMPLATE ABAIXO PARA CADA PRODUTO.             ║
+                ║                                                              ║
+                ║  Use a classe .product-badge.secos e .pairing-dot.secos      ║
+                ║  para manter o esquema de cor da categoria (tom terra).      ║
+                ╚══════════════════════════════════════════════════════════════╝
+
+            <div class="products-grid products-grid--last">
+
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="imagens/nome-do-produto.jpg" alt="Nome do produto Famiglia Tegon">
+                        <span class="product-badge secos">Secos</span>
+                        <span class="product-weight">500 g</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Nome do Produto</h3>
+                        <p class="product-subtitle">Subtítulo descritivo</p>
+                        <p class="product-desc">Descrição completa do produto, ressaltando origem, ingredientes e diferenciais artesanais.</p>
+
+                        <p class="product-section-label">Apresentação</p>
+                        <div class="spec-block">
+                            <div class="spec-row">
+                                <span class="spec-key">Peso líquido</span>
+                                <span class="spec-val">500 g</span>
+                            </div>
+                        </div>
+
+                        <p class="product-section-label">Combina com</p>
+                        <ul class="pairing-list">
+                            <li><span class="pairing-dot secos" aria-hidden="true"></span>Sugestão de uso 1</li>
+                            <li><span class="pairing-dot secos" aria-hidden="true"></span>Sugestão de uso 2</li>
+                            <li><span class="pairing-dot secos" aria-hidden="true"></span>Sugestão de uso 3</li>
+                        </ul>
+                    </div>
+                    <div class="product-footer">
+                        <a href="https://wa.me/5519997172221?text=Olá!%20Tenho%20interesse%20no%20Produto" class="cta-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-whatsapp fs-6" aria-hidden="true"></i>Pedir agora
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+            -->
+
+        </div>
+    </main>
+
+    <footer class="footer bg-dark shadow-lg">
+        <div class="container text-center p-4 text-white">
+            <p class="mb-0">&copy; Famiglia Tegon 2026. Todos os direitos reservados.</p>
+            <div class="mt-2">
+                <small>
+                    <a href="contato.html" class="text-decoration-none text-white">Fale Conosco</a>
+                    &nbsp;|&nbsp;
+                    <a href="receita.html" class="text-decoration-none text-white">Receitas</a>
+                </small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp FAB -->
+    <a href="https://wa.me/5519997172221" target="_blank" rel="noopener noreferrer" class="tg-fab" aria-label="Fale pelo WhatsApp">
+        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

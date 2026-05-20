@@ -26,7 +26,7 @@
 
         <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-white fixed-top navbar-custom shadow-sm" aria-label="Navegação principal">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="home.html">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
                     <img src="imagens/Logo.png" alt="Famiglia Tegon" class="logo-nav">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu">
@@ -43,7 +43,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownProdutos">
                                  <li><a class="dropdown-item" href="todosprodutos.html">Todos produtos</a></li>
                                 <li><a class="dropdown-item" href="produtos-conservas.html">Conservas</a></li>
-                                <li><a class="dropdown-item" href="produtos-mistos.html">Mistos</a></li>
+                                <li><a class="dropdown-item" href="produtos-secos.html">Secos</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="receita.html">Receitas</a></li>
@@ -66,44 +66,69 @@
             </div>
         </div>
 
-        <!-- História -->
+        <!-- História + Carrossel lateral sticky -->
         <section class="tg-about">
             <div class="container">
                 <div class="row g-5 align-items-start">
 
-                    <!-- Texto -->
+                    <!-- Texto (esquerda) -->
                     <div class="col-lg-7 tg-about-text">
-                        <p>
+                        <p class="tg-reveal">
                             A Famiglia Tegon Temperos é uma empresa jovem, que tem como sua principal atividade a produção Artesanal, mas com grande conhecimento na área de alimentos, conhecimento esse, que herdamos de nossa <strong>Nonna Santa</strong>.
                         </p>
-                        <p>
+                        <p class="tg-reveal" data-delay="1">
                             No dia-a-dia de nossa infância sempre fomos curiosos nas receitas que nossa Nonna fazia. E essa curiosidade fez com que anos depois nos aprofundássemos em recriar os quitutes e um arsenal de ideias trazidas por ela.
                         </p>
 
-                        <div class="tg-quote-block">
+                        <div class="tg-quote-block tg-reveal">
                             <p>"Apesar de sermos uma empresa jovem no mercado, temos em nossos produtos, um trabalho sério, profissional e com qualidade ímpar."</p>
                         </div>
 
-                        <p>
+                        <p class="tg-reveal">
                             Nossos produtos vêm diretamente de produtores rurais, que carinhosamente, chamamos de nossos parceiros da <strong>"Roça"</strong>. Pois foi através da Roça que conquistamos nossos conhecimentos. E assim com profissionais comprometidos com a qualidade dos nossos produtos, conseguimos ter a satisfação de nossos consumidores.
                         </p>
-                        <p>
+                        <p class="tg-reveal" data-delay="1">
                             Atualmente atuamos exclusivamente no mercado de conservas, e já preparando área de temperos secos. Os ingredientes utilizados na fabricação dos nossos produtos, antes de ser envasados, passam por um rígido processo de seleção e controle interno de qualidade.
                         </p>
 
-                        <p class="tg-closing">
+                        <p class="tg-closing tg-reveal">
                             Todos esses cuidados garantem a segurança e a satisfação de parceiros, clientes e consumidores. Assim é um pouquinho de nossa história, pois com esse tempero tudo fica mais gostoso!
                         </p>
                     </div>
 
-                    <!-- Imagem -->
+                    <!-- ═══════════════════════════════════════════════
+                         Coluna direita sticky — Carrossel artesanal
+                         ═══════════════════════════════════════════════ -->
                     <div class="col-lg-5">
-                        <div class="tg-about-img-wrap">
-                            <img src="imagens/Picles.jpeg" alt="Produtos Tegon">
-                            <div class="tg-img-caption">
-                                <h4>Produção Artesanal</h4>
-                                <p>Qualidade herdada de geração em geração.</p>
+                        <div class="tg-about-side tg-reveal" data-delay="1">
+
+                            <p class="tg-side-eyebrow">Cozinha Artesanal</p>
+
+                            <div class="tg-carousel-wrap">
+                                <div id="artesanalCarousel" class="carousel slide carousel-fade tg-carousel" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
+
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#artesanalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Picles Misto"></button>
+                                        <button type="button" data-bs-target="#artesanalCarousel" data-bs-slide-to="1" aria-label="Pimenta Dedo de Moça"></button>
+                                        <button type="button" data-bs-target="#artesanalCarousel" data-bs-slide-to="2" aria-label="Picles de Pepino"></button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="imagens/Arte pimenta.jpeg" alt="Assim começamos nosso Picles em conserva — ingredientes frescos, selecionados um a um">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="imagens/Arte picles.jpeg" alt="Assim começamos nossa Pimenta Dedo de Moça em conserva — ingredientes frescos, selecionados um a um">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="imagens/Arte picles mistos.jpeg" alt="Assim começamos nosso Picles — Pepino em conserva — ingredientes frescos, selecionados um a um">
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
+
                         </div>
                     </div>
 
@@ -114,22 +139,22 @@
         <!-- Valores -->
         <section class="tg-values">
             <div class="container">
-                <div class="text-center mb-5">
+                <div class="text-center mb-5 tg-reveal">
                     <p class="tg-eyebrow">Nossos valores</p>
                     <h2 class="tg-section-title">O que nos move</h2>
                 </div>
                 <div class="row g-4 text-center">
-                    <div class="col-md-4">
+                    <div class="col-md-4 tg-pillar-item tg-reveal" data-delay="1">
                         <div class="tg-pillar-icon gold"><i class="bi bi-award-fill" aria-hidden="true"></i></div>
                         <h3 class="tg-pillar-title">Tradição Familiar</h3>
                         <p class="tg-pillar-text">Receitas autênticas que preservam o verdadeiro sabor caseiro da Nonna Santa.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 tg-pillar-item tg-reveal" data-delay="2">
                         <div class="tg-pillar-icon green"><i class="bi bi-shield-check" aria-hidden="true"></i></div>
                         <h3 class="tg-pillar-title">Qualidade Premium</h3>
                         <p class="tg-pillar-text">Processos artesanais com rigoroso controle de higiene e sabor em cada etapa.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 tg-pillar-item tg-reveal" data-delay="3">
                         <div class="tg-pillar-icon red"><i class="bi bi-people-fill" aria-hidden="true"></i></div>
                         <h3 class="tg-pillar-title">Parceria com a Roça</h3>
                         <p class="tg-pillar-text">Ingredientes direto de produtores rurais comprometidos com origem e frescor.</p>
@@ -159,5 +184,25 @@
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scroll-reveal via IntersectionObserver (~15 linhas, sem libs) -->
+    <script>
+        (function () {
+            var items = document.querySelectorAll('.tg-reveal');
+            if (!('IntersectionObserver' in window) || !items.length) {
+                items.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            items.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>
